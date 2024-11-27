@@ -90,9 +90,23 @@ Testcase scenarios:
 
 The structure and explanations are provided in a step-by-step manner to ensure users can easily follow the process from running tests to generating and viewing the report.
 
+## Folder Structure
+
+```plaintext
 project-root/
 │
-├── allure-results/ # Contains test execution results (generated after running tests)
-├── allure-report/ # Contains generated Allure report (created by `generate-report` script)
-├── wdio.conf.js # WebDriverIO configuration file
-└── package.json # Project metadata and script definitions
+├── .github/                  # GitHub Actions workflows
+│   └── workflows/
+│       └── ci.yml            # CI pipeline configuration for WebDriverIO tests
+├── allure-results/            # Contains raw test results (generated after running tests)
+├── allure-report/             # Contains generated Allure report (created by generate-report)
+├── node_modules/              # Installed npm dependencies
+├── package.json               # Project metadata and script definitions
+├── wdio.conf.js               # WebDriverIO configuration file
+└── tests/                     # Test-related files and directories
+    ├── pageobjects/           # Page Object Model files
+    ├── specs/                 # Test specification files
+    └── utilities/             # Utility/helper files
+
+
+
