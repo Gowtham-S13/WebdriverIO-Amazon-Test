@@ -1,3 +1,4 @@
+import elementHelper from "../utilities/elementHelper";
 import BasePage from "./page";
 import { $, $$ } from "@wdio/globals";
 
@@ -18,19 +19,19 @@ class CartPage extends BasePage {
 
   //Functions
   async getCartItemCount() {
-    return parseInt(await this.getText(this.cartCount));
+    return parseInt(await elementHelper.getText(this.cartCount));
   }
 
   async proceedToCheckout() {
-    await this.click(this.proceedToCheckoutButton);
+    await elementHelper.clickElement(this.proceedToCheckoutButton);
   }
 
   async removeItem() {
-    await this.click(this.removeButton);
+    await elementHelper.clickElement(this.removeButton);
   }
 
   async getCartTotal() {
-    return await this.getText(this.cartTotal);
+    return await elementHelper.getText(this.cartTotal);
   }
 }
 

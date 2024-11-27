@@ -1,3 +1,4 @@
+import elementHelper from "../utilities/elementHelper";
 import basePage from "./page";
 
 class HomePage extends basePage {
@@ -9,8 +10,8 @@ class HomePage extends basePage {
   }
 
   async searchForProduct(productName) {
-    await this.type(this.searchInput, productName);
-    await this.click(this.searchButton);
+    await elementHelper.setValue(this.searchInput, productName);
+    await elementHelper.clickElement(this.searchButton);
   }
 }
 

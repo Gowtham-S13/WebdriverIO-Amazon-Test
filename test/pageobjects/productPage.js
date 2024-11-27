@@ -1,3 +1,4 @@
+import elementHelper from "../utilities/elementHelper";
 import BasePage from "./page";
 import { $, browser } from "@wdio/globals";
 
@@ -13,18 +14,17 @@ class ProductPage extends BasePage {
     return $("#priceblock_ourprice");
   }
 
-
   //Functions
   async selectFirstProduct() {
-    await this.click(this.firstProduct);
+    await elementHelper.clickElement(this.firstProduct);
   }
 
   async addToCart() {
-    await this.click(this.addToCartButton);
+    await elementHelper.clickElement(this.addToCartButton);
   }
 
   async getPrice() {
-    return await this.getText(this.price);
+    return await elementHelper.getText(this.price);
   }
 }
 

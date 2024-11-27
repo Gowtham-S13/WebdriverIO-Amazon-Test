@@ -1,0 +1,46 @@
+name: WebDriverIO CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      # Set up the latest Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: 'node'  # This ensures the latest stable version of Node.js
+
+      # Install dependencies
+      - name: Install dependencies
+        run: |
+          npm install
+
+      # Run WebDriverIO tests
+      - name: Run WebDriverIO tests
+        run: |
+          npm run execute-script
+          
+      # Generate Allure report
+      - name: Generate Allure report
+        run: |
+          npm run generate-report
+          
+      # Upload Allure results as artifacts
+      - name: Upload Allure Results
+        uses: actions/upload-artifact@v2
+        with:
+          name: allure-results
+          path: allure-results/

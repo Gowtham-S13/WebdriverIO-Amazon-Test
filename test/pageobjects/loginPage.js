@@ -1,6 +1,8 @@
-import BasePage from "./page";
+import elementHelper from "../utilities/elementHelper";
+import waitHelper from "../utilities/waitHelper";
+import page from "./page";
 
-class LoginPage extends BasePage {
+class LoginPage extends page {
   get emailInput() {
     return "#ap_email";
   }
@@ -10,22 +12,31 @@ class LoginPage extends BasePage {
   get loginButton() {
     return "#signInSubmit";
   }
+  get continueButton() {
+    return "#continue";
+  }
   get accountButton() {
     return "#nav-link-accountList";
   }
   get signoutButton() {
     return "span=Sign Out";
   }
+  get greetingText() {
+    return "#nav-link-accountList-nav-line-1";
+  }
 
   async login(email, password) {
-    await this.type(this.emailInput, email);
-    await this.type(this.passwordInput, password);
-    await this.click(this.loginButton);
+    await elementHelper.setValue(this.emailInput, email);
+    await elementHelper.clickElement(this.continueButton);
+    await elementHelper.setValue(this.passwordInput, password);
+    await elementHelper.clickElement(this.loginButton);
   }
 
   async logoutApplication() {
-    await this.click(this.accountButton);
-    await this.click(this.signoutButton);
+    await waitHelper.waitForElementToBeDisplayed(this.accountButton);
+    await elementHelper.hoveronElement(this.accountButton);
+    await waitHelper.waitForElementToBeDisplayed(this.signoutButton);
+    await elementHelper.clickElement(this.signoutButton);
   }
 }
 

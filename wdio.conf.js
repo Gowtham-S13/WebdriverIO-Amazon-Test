@@ -1,4 +1,4 @@
-export const config = {
+exports.config = {
   //
   // ====================
   // Runner Configuration
@@ -50,6 +50,14 @@ export const config = {
   capabilities: [
     {
       browserName: "chrome",
+      "goog:chromeOptions": {
+        excludeSwitches: ["enable-automation"],
+        prefs: {
+          credentials_enable_service: false,
+          "safebrowsing.enabled": true,
+          "safebrowsing.disable_download_protection": false,
+        },
+      },
     },
   ],
 
@@ -87,7 +95,7 @@ export const config = {
   // baseUrl: 'http://localhost:8080',
   //
   // Default timeout for all waitFor* commands.
-  waitforTimeout: 10000,
+  waitforTimeout: 30000,
   //
   // Default timeout in milliseconds for request
   // if browser driver or grid doesn't send response
@@ -123,7 +131,10 @@ export const config = {
   // Test reporter for stdout.
   // The only one supported by default is 'dot'
   // see also: https://webdriver.io/docs/dot-reporter
-  reporters: [["allure", { outputDir: "allure-results" }]],
+  reporters: [
+    "spec", // Console reporter
+    ["allure", { outputDir: "allure-results" }],
+  ],
 
   // Options to be passed to Mocha.
   // See the full list at http://mochajs.org/
@@ -263,8 +274,9 @@ export const config = {
    * @param {Array.<String>} specs List of spec file paths that ran
    */
   after: function (result, capabilities, specs) {
+    const execSync = require("child_process").execSync;
     if (result === 0) {
-      const execSync = require("child_process").execSync;
+      // Only generate the report if all tests pass (optional)
       execSync("allure generate allure-results --clean");
     }
   },

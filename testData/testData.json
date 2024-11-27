@@ -1,0 +1,13 @@
+{
+  "loginCredentials": {
+    "userName": "Automation",
+    "userMail": "automationtest2027@gmail.com",
+    "password": "Automation@2024"
+  },
+  "address":{
+    "addressLine1": "129 SNIPATUIT RD",
+    "addressLine2": "ROCHESTER, MA 02770-1504",
+    "country" : "United States",
+    "phoneNumber": "123456789"
+  }
+}
