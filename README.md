@@ -72,9 +72,6 @@ Testcase scenarios:
    npm run execute-script
 
    ```
-
-### Explanation:
-
 - **Running the Tests**: The `npm run execute-script` command runs your WebDriverIO tests based on the configuration in `wdio.conf.js`.
 
 3. After execution, Need to generate allure report.
@@ -83,8 +80,6 @@ Testcase scenarios:
    npm run generate-report
 
    ```
-
-### Explanation:
 
 - **Generating the Allure Report**: After running the tests, the `npm run generate-report` command generates a single-file Allure report from the test results.
 
