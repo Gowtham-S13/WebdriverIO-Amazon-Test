@@ -4,12 +4,11 @@
 
 I will use:
 
-Test Framework: WebdriverIO with Mocha framework using JavaScript.
-Design Pattern: Page Object Model (POM).
-Best Practices: Modularized code, reusable utilities, clean assertions, and proper naming conventions.
-Parallel Execution: Configured in **wdio.conf.js**.
-Reporting: Integrated Allure reporting.
-Documentation: Inline comments and a README.md.
+- **Test Framework**: WebdriverIO with Mocha framework using JavaScript.
+- **Design Pattern**: Page Object Model (POM).
+- **Best Practices**: Modularized code, reusable utilities, clean assertions, and proper naming conventions.
+- **Parallel Execution**: Configured in **wdio.conf.js**.
+- **Reporting**: Integrated Allure reporting.
 
 ### Explanation of Folders:
 
